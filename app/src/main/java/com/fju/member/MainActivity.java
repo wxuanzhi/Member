@@ -14,12 +14,18 @@ public class MainActivity extends AppCompatActivity {
     private EditText nickname;
     private EditText age;
     private EditText gender;
+    private String resultNickname;
+    private String resultAge;
+    private String resultGender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        resultNickname = nickname.getText().toString();
+        resultAge = age.getText().toString();
+        resultGender = gender.getText().toString();
         nickname = findViewById(R.id.nn);
         age = findViewById(R.id.ag);
         gender = findViewById(R.id.ge);
@@ -35,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode != RESULT_OK){
                 finish();
             }else{
+                Log.d("RESULT",resultNickname+"/"+resultAge+"/"+resultGender);
                 nickname.setText(getSharedPreferences("test",MODE_PRIVATE).getString("nickname",""));
                 age.setText(getSharedPreferences("test",MODE_PRIVATE).getString("age",""));
                 gender.setText(getSharedPreferences("test",MODE_PRIVATE).getString("gender",""));
